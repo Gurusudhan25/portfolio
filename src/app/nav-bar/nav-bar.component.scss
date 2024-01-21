@@ -1,0 +1,16 @@
+@import "../../assets/styles/breakpoint";
+
+mat-toolbar {
+  justify-content: space-evenly;
+
+  @include breakpoint(small, down) {
+    justify-content: space-between;
+  }
+}
+.actions {
+  gap: 1rem;
+
+  @include breakpoint(small, down) {
+    gap: unset;
+  }
+}
