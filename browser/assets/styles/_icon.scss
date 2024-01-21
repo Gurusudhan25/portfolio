@@ -1,0 +1,15 @@
+
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin icon_color_theme($theme) {
+
+  
+}
+
+
+@mixin theme($theme) {
+  @if mat.theme-has($theme, color) {
+    @include icon_color_theme($theme);
+  }
+}
