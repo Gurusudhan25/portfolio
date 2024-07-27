@@ -3,8 +3,6 @@
 @import "breakpoint";
 
 @mixin toolbar_color_theme($theme) {
-  mat-toolbar {
-  }
 }
 
 @mixin toolbar_typo_theme($theme) {
