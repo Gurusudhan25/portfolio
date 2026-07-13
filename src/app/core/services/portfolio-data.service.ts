@@ -24,8 +24,8 @@ export class PortfolioDataService {
     location: 'Chennai, Tamil Nadu, India',
     availability: 'Open to Opportunities',
     email: 'Gurusudhan@email.com',
-    linkedin: 'https://linkedin.com/in/Gurusudhan',
-    github: 'https://github.com/Gurusudhan',
+    linkedin: 'https://www.linkedin.com/in/gurusudhanv2512/',
+    github: 'https://github.com/Gurusudhan25',
     resumeUrl:
       'https://drive.google.com/file/d/1q4EX7OoipeisloiWsIoxBj0CWiU6ybns/view?usp=sharing',
   });
