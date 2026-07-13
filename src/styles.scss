@@ -1,0 +1,19 @@
+// Global Stylesheet — Gurusudhan V Portfolio
+
+// ─── Tokens ────────────────────────────────────────────────────────────────
+@use 'styles/tokens/colors';
+@use 'styles/tokens/typography' as token-typography;
+@use 'styles/tokens/spacing';
+@use 'styles/tokens/animation';
+
+// ─── Base ──────────────────────────────────────────────────────────────────
+@use 'styles/base/reset';
+@use 'styles/base/typography' as base-typography;
+
+// ─── Utilities ─────────────────────────────────────────────────────────────
+@use 'styles/utilities/glass';
+@use 'styles/utilities/animations';
+@use 'styles/utilities/layout';
+
+// ─── Google Fonts ──────────────────────────────────────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');

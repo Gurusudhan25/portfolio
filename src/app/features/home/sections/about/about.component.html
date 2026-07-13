@@ -1,0 +1,42 @@
+<section class="about section">
+  <div class="container">
+
+    <app-section-header
+      label="About"
+      title="More than just code"
+      subtitle="Engineering is about understanding problems deeply, designing thoughtful solutions, and building software that lasts."
+      [appScrollReveal]="'fade-up'"
+    />
+
+    <div class="about__layout">
+      <!-- Story -->
+      <div class="about__story-card card" [appScrollReveal]="'fade-up'" [revealDelay]="100">
+        <p class="about__story-text">
+          Software Engineer based in Chennai, India, with 3+ years building enterprise-grade web applications for InkSoft and GraphicsFlow — SaaS platforms used by thousands of businesses in the print and apparel industry. I specialize in Angular and TypeScript, with full-stack range across Node.js and MongoDB, and care as much about clear communication and code reviews as I do about the code itself.
+        </p>
+
+        <blockquote class="about__quote">
+          <span class="about__quote-mark" aria-hidden="true">"</span>
+          <p>{{ personal().philosophy }}</p>
+        </blockquote>
+      </div>
+
+      <!-- Principles, condensed to a chip row -->
+      <div class="about__principles" [appScrollReveal]="'fade-up'" [revealDelay]="150">
+        <h3 class="about__principles-title">Engineering principles</h3>
+        <div class="about__principles-row">
+          @for (principle of principles; track principle.title; let i = $index) {
+            <span
+              class="about__principle-chip"
+              [style.animation-delay]="(i * 50) + 'ms'"
+              [title]="principle.description">
+              <span class="about__principle-icon" [innerHTML]="principle.icon" aria-hidden="true"></span>
+              {{ principle.title }}
+            </span>
+          }
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

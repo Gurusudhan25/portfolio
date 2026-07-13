@@ -1,0 +1,77 @@
+<section class="contact section">
+  <div class="container">
+
+    <app-section-header
+      label="Contact"
+      title="Let's Build Something Together"
+      subtitle="I'm open to software engineering opportunities where I can contribute to modern teams building scalable products."
+      [appScrollReveal]="'fade-up'"
+    />
+
+    <div class="contact__grid">
+
+      <!-- Message card -->
+      <div class="contact__message card" [appScrollReveal]="'fade-up'" [revealDelay]="100">
+        <p class="contact__message-text">
+          If you're looking for a Software Engineer who cares about quality, performance, and building
+          software that lasts — I'd genuinely enjoy connecting.
+        </p>
+        <p class="contact__message-text">
+          Whether it's a full-time role, a technical conversation, or a collaboration — feel free to reach
+          out through any of the channels below.
+        </p>
+
+        <div class="contact__links">
+          @for (link of contactLinks; track link.label) {
+            <a
+              class="contact__link"
+              [href]="link.href"
+              [attr.target]="link.external ? '_blank' : null"
+              [attr.rel]="link.external ? 'noopener noreferrer' : null"
+              [attr.aria-label]="'Contact via ' + link.label">
+              <span class="contact__link-icon" [innerHTML]="link.icon" aria-hidden="true"></span>
+              <div class="contact__link-content">
+                <span class="contact__link-label">{{ link.label }}</span>
+                <span class="contact__link-value">{{ link.value }}</span>
+              </div>
+              <svg class="contact__link-arrow" width="14" height="14" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- Info card -->
+      <div class="contact__info" [appScrollReveal]="'fade-up'" [revealDelay]="200">
+        <div class="contact__info-card card">
+          <div class="contact__availability">
+            <span class="contact__availability-dot" aria-hidden="true"></span>
+            <span class="contact__availability-text">{{ personal().availability }}</span>
+          </div>
+          <h3 class="contact__info-name">{{ personal().name }}</h3>
+          <p class="contact__info-title">{{ personal().title }}</p>
+          <p class="contact__info-location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            {{ personal().location }}
+          </p>
+        </div>
+
+        <div class="contact__quote card">
+          <blockquote>
+            <p>"{{ personal().philosophy }}"</p>
+          </blockquote>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+main {
+  // Skip-to-content link
+  &:focus-within #skip-nav {
+    top: var(--space-4);
+  }
+}

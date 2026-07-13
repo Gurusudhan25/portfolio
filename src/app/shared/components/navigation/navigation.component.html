@@ -1,0 +1,97 @@
+<header class="nav" [class.nav--scrolled]="isScrolled()" role="banner">
+  <div class="nav__inner">
+
+    <!-- Logo -->
+    <a class="nav__logo" (click)="scrollTo('hero')" role="button" tabindex="0"
+       (keydown.enter)="scrollTo('hero')" aria-label="Gurusudhan V — scroll to top">
+      <span class="nav__logo-mark">GV</span>
+      <span class="nav__logo-text">Gurusudhan</span>
+    </a>
+
+    <!-- Desktop Links -->
+    <nav class="nav__links" aria-label="Primary navigation">
+      @for (item of navItems; track item.anchor) {
+        <button
+          class="nav__link"
+          (click)="scrollTo(item.anchor)"
+          [attr.aria-label]="'Navigate to ' + item.label + ' section'">
+          {{ item.label }}
+        </button>
+      }
+    </nav>
+
+    <!-- Desktop Actions -->
+    <div class="nav__actions">
+      <button class="nav__resume-btn" (click)="openResume()" aria-label="Open resume in new tab">
+        <span>Resume</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </button>
+
+      <button class="nav__contact-btn" (click)="scrollTo('contact')" aria-label="Navigate to contact section">
+        Let's Talk
+      </button>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button
+      class="nav__mobile-toggle"
+      [class.nav__mobile-toggle--open]="mobileOpen()"
+      (click)="toggleMobile()"
+      [attr.aria-expanded]="mobileOpen()"
+      aria-label="Toggle navigation menu"
+      aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Drawer -->
+@if (mobileOpen()) {
+  <div class="nav__mobile-overlay" (click)="closeMobile()" aria-hidden="true"></div>
+  <nav
+    id="mobile-menu"
+    class="nav__mobile"
+    aria-label="Mobile navigation"
+    role="dialog"
+    aria-modal="true">
+    <div class="nav__mobile-header">
+      <span class="nav__logo-mark">GV</span>
+      <button class="nav__mobile-close" (click)="closeMobile()" aria-label="Close navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="nav__mobile-links">
+      @for (item of navItems; track item.anchor) {
+        <button
+          class="nav__mobile-link"
+          (click)="scrollTo(item.anchor)">
+          {{ item.label }}
+        </button>
+      }
+    </div>
+
+    <div class="nav__mobile-footer">
+      <button class="nav__resume-btn nav__resume-btn--full" (click)="openResume()">
+        View Resume
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+}

@@ -1,0 +1,156 @@
+<app-scroll-progress />
+<app-navigation />
+
+@if (project(); as p) {
+  <main class="case-study">
+
+    <!-- Hero -->
+    <section class="case-study__hero">
+      <div class="case-study__hero-bg" aria-hidden="true">
+        <div class="case-study__hero-blob"></div>
+      </div>
+      <div class="container">
+        <div class="case-study__breadcrumb">
+          <a routerLink="/" class="case-study__breadcrumb-link">Home</a>
+          <span aria-hidden="true">/</span>
+          <a routerLink="/" fragment="projects" class="case-study__breadcrumb-link">Projects</a>
+          <span aria-hidden="true">/</span>
+          <span>{{ p.name }}</span>
+        </div>
+
+        <div class="case-study__hero-content">
+          <div class="case-study__hero-meta">
+            <app-badge variant="accent" size="md">{{ p.industry }}</app-badge>
+            <app-badge variant="muted" size="md">{{ p.role }}</app-badge>
+          </div>
+
+          <h1 class="case-study__title">{{ p.name }}</h1>
+          <p class="case-study__tagline">{{ p.tagline }}</p>
+
+          <div class="case-study__hero-actions">
+            @if (p.companyUrl) {
+              <a [href]="p.companyUrl" target="_blank" rel="noopener noreferrer"
+                 class="case-study__visit-btn" [attr.aria-label]="'Visit ' + p.name + ' website'">
+                Visit {{ p.name }}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            }
+            <a routerLink="/" fragment="projects" class="case-study__back-btn">
+              ← All Projects
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <div class="case-study__body">
+      <div class="container">
+        <div class="case-study__layout">
+
+          <!-- Main content -->
+          <div class="case-study__main">
+
+            <!-- Overview -->
+            <section class="case-study__section">
+              <h2 class="case-study__section-title">Product Overview</h2>
+              <p class="case-study__text">{{ p.summary }}</p>
+            </section>
+
+            <!-- Problem -->
+            <section class="case-study__section">
+              <h2 class="case-study__section-title">Business Problem</h2>
+              <p class="case-study__text">{{ p.problem }}</p>
+            </section>
+
+            <!-- Solution -->
+            <section class="case-study__section">
+              <h2 class="case-study__section-title">My Engineering Contribution</h2>
+              <p class="case-study__text">{{ p.solution }}</p>
+            </section>
+
+            <!-- Highlights -->
+            <section class="case-study__section">
+              <h2 class="case-study__section-title">Engineering Highlights</h2>
+              <ul class="case-study__highlights">
+                @for (hl of p.highlights; track hl) {
+                  <li class="case-study__highlight">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    {{ hl }}
+                  </li>
+                }
+              </ul>
+            </section>
+
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="case-study__sidebar">
+
+            <!-- Role card -->
+            <div class="case-study__sidebar-card card">
+              <h3 class="case-study__sidebar-label">My Role</h3>
+              <p class="case-study__sidebar-value">{{ p.role }}</p>
+
+              <h3 class="case-study__sidebar-label" style="margin-top: var(--space-5)">Duration</h3>
+              <p class="case-study__sidebar-value">{{ p.startDate }} — {{ p.endDate }}</p>
+
+              <h3 class="case-study__sidebar-label" style="margin-top: var(--space-5)">Industry</h3>
+              <p class="case-study__sidebar-value">{{ p.industry }}</p>
+
+              @if (p.companyUrl) {
+                <h3 class="case-study__sidebar-label" style="margin-top: var(--space-5)">Website</h3>
+                <a [href]="p.companyUrl" target="_blank" rel="noopener noreferrer"
+                   class="case-study__sidebar-link">
+                  {{ p.companyUrl.replace('https://', '').replace('www.', '') }}
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                  </svg>
+                </a>
+              }
+            </div>
+
+            <!-- Tech stack -->
+            <div class="case-study__sidebar-card card">
+              <h3 class="case-study__sidebar-label">Technology Stack</h3>
+              <div class="case-study__tech">
+                @for (tech of p.technologies; track tech) {
+                  <app-badge variant="accent" size="sm">{{ tech }}</app-badge>
+                }
+              </div>
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation between projects -->
+    <div class="case-study__nav-footer">
+      <div class="container">
+        <a routerLink="/" fragment="projects" class="case-study__all-projects-btn">
+          ← Back to All Projects
+        </a>
+      </div>
+    </div>
+
+  </main>
+} @else {
+  <div class="case-study__not-found">
+    <h1>Project not found</h1>
+    <a routerLink="/">← Return Home</a>
+  </div>
+}
+
+<app-footer />

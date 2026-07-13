@@ -1,0 +1,155 @@
+// Animation Utilities & Keyframes
+
+// ─── Keyframes ─────────────────────────────────────────────────────────────
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blurReveal {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(59, 130, 246, 0.20); }
+  50%       { box-shadow: 0 0 24px rgba(59, 130, 246, 0.50); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes blob-move {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -50px) scale(1.1); }
+  66%       { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+// ─── Utility Classes ───────────────────────────────────────────────────────
+.animate-fade-in     { animation: fadeIn var(--duration-normal) var(--ease-out) both; }
+.animate-fade-in-up  { animation: fadeInUp var(--duration-moderate) var(--ease-out) both; }
+.animate-blur-reveal { animation: blurReveal var(--duration-slow) var(--ease-out) both; }
+.animate-scale-in    { animation: scaleIn var(--duration-normal) var(--ease-out) both; }
+.animate-float       { animation: float 4s ease-in-out infinite; }
+
+// Stagger delays
+@for $i from 1 through 10 {
+  .stagger-#{$i} { animation-delay: #{$i * 80}ms; }
+}
+
+// ─── Reduced Motion ────────────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// ─── Scroll Reveal Classes (applied by directive) ──────────────────────────
+.reveal-fade-up {
+  animation: fadeInUp var(--duration-moderate) var(--ease-out) both;
+}
+
+.reveal-fade-in {
+  animation: fadeIn var(--duration-moderate) var(--ease-out) both;
+}
+
+.reveal-blur-reveal {
+  animation: blurReveal var(--duration-slow) var(--ease-out) both;
+}
+
+.reveal-slide-left {
+  animation: slideInLeft var(--duration-moderate) var(--ease-out) both;
+}
+
+.reveal-slide-right {
+  animation: slideInRight var(--duration-moderate) var(--ease-out) both;
+}
+
+.reveal-scale-in {
+  animation: scaleIn var(--duration-normal) var(--ease-out) both;
+}

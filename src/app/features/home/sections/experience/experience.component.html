@@ -1,0 +1,148 @@
+<section class="experience section">
+  <div class="container">
+
+    <app-section-header
+      label="Experience"
+      title="Professional Journey"
+      subtitle="Building products, solving business problems, and continuously improving software through thoughtful engineering."
+      [appScrollReveal]="'fade-up'"
+    />
+
+    <div class="experience__timeline">
+      <!-- Timeline line -->
+      <div class="experience__line" aria-hidden="true"></div>
+
+      @for (exp of experiences(); track exp.id; let i = $index) {
+        <article
+          class="experience__card card"
+          [class.experience__card--expanded]="isExpanded(exp.id)"
+          [appScrollReveal]="'fade-up'"
+          [revealDelay]="i * 120">
+
+          <!-- Card Header -->
+          <div class="experience__card-header" (click)="toggle(exp.id)"
+               role="button" [attr.tabindex]="0"
+               (keydown.enter)="toggle(exp.id)"
+               [attr.aria-expanded]="isExpanded(exp.id)"
+               [attr.aria-controls]="'exp-' + exp.id">
+
+            <!-- Timeline dot -->
+            <div class="experience__dot" aria-hidden="true">
+              <div class="experience__dot-inner"></div>
+            </div>
+
+            <div class="experience__header-content">
+              <div class="experience__header-top">
+                <div>
+                  <h3 class="experience__role">{{ exp.role }}</h3>
+                  <div class="experience__company-row">
+                    <span class="experience__company">{{ exp.company }}</span>
+                    <span class="experience__separator" aria-hidden="true">·</span>
+                    <span class="experience__type">{{ exp.type }}</span>
+                  </div>
+                </div>
+
+                <div class="experience__meta">
+                  <time class="experience__period">
+                    {{ formatDate(exp.startDate) }} — {{ formatDate(exp.endDate) }}
+                  </time>
+                  <app-badge variant="muted" size="sm">{{ getDuration(exp.startDate, exp.endDate) }}</app-badge>
+                  @if (exp.endDate === 'Present') {
+                    <app-badge variant="success" size="sm">Current</app-badge>
+                  }
+                </div>
+              </div>
+
+              <p class="experience__summary">{{ exp.summary }}</p>
+
+              <!-- Tech preview chips -->
+              <div class="experience__tech-preview">
+                @for (tech of exp.technologies.slice(0, 6); track tech) {
+                  <app-badge variant="default" size="sm">{{ tech }}</app-badge>
+                }
+                @if (exp.technologies.length > 6) {
+                  <app-badge variant="muted" size="sm">+{{ exp.technologies.length - 6 }}</app-badge>
+                }
+              </div>
+            </div>
+
+            <!-- Expand icon -->
+            <div class="experience__expand-icon" aria-hidden="true"
+                 [class.experience__expand-icon--open]="isExpanded(exp.id)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Expanded Details -->
+          @if (isExpanded(exp.id)) {
+            <div [id]="'exp-' + exp.id" class="experience__details">
+              <div class="experience__details-inner">
+
+                <!-- Responsibilities -->
+                <div class="experience__section">
+                  <h4 class="experience__section-title">Responsibilities</h4>
+                  <ul class="experience__list">
+                    @for (resp of exp.responsibilities; track resp) {
+                      <li class="experience__list-item">
+                        <span class="experience__list-dot" aria-hidden="true"></span>
+                        {{ resp }}
+                      </li>
+                    }
+                  </ul>
+                </div>
+
+                <!-- Highlights -->
+                @if (exp.highlights.length) {
+                  <div class="experience__section">
+                    <h4 class="experience__section-title">Engineering Highlights</h4>
+                    <ul class="experience__highlights">
+                      @for (hl of exp.highlights; track hl) {
+                        <li class="experience__highlight">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                               stroke="currentColor" stroke-width="2.5"
+                               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"/>
+                          </svg>
+                          {{ hl }}
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                }
+
+                <!-- Achievements -->
+                @if (exp.achievements?.length) {
+                  <div class="experience__section">
+                    <h4 class="experience__section-title">Achievements</h4>
+                    <ul class="experience__achievements">
+                      @for (ach of exp.achievements!; track ach) {
+                        <li class="experience__achievement">
+                          <span class="experience__achievement-icon" aria-hidden="true">🏆</span>
+                          {{ ach }}
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                }
+
+                <!-- Full tech stack -->
+                <div class="experience__section">
+                  <h4 class="experience__section-title">Technology Stack</h4>
+                  <div class="experience__tech-full">
+                    @for (tech of exp.technologies; track tech) {
+                      <app-badge variant="accent" size="sm">{{ tech }}</app-badge>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </article>
+      }
+    </div>
+
+  </div>
+</section>

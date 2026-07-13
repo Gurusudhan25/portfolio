@@ -1,0 +1,73 @@
+<footer class="footer" role="contentinfo">
+
+  <!-- Ambient background -->
+  <div class="footer__bg" aria-hidden="true">
+    <div class="footer__blob footer__blob--blue"></div>
+    <div class="footer__blob footer__blob--purple"></div>
+    <div class="footer__noise"></div>
+    <div class="footer__grid"></div>
+  </div>
+
+  <div class="footer__inner">
+
+    <!-- Top row: CTA + email button -->
+    <div class="footer__top">
+      <div class="footer__cta-block">
+        <span class="footer__chat-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            <circle cx="8" cy="11.5" r="0.75" fill="currentColor" stroke="none"/>
+            <circle cx="12" cy="11.5" r="0.75" fill="currentColor" stroke="none"/>
+            <circle cx="16" cy="11.5" r="0.75" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+
+        <h2 class="footer__title">Let's talk.</h2>
+
+        <!-- Social links -->
+        <div class="footer__social" aria-label="Social links">
+          @for (link of socialLinks; track link.label) {
+            <a [href]="link.href"
+               [attr.target]="link.href.startsWith('mailto') ? null : '_blank'"
+               [attr.rel]="link.href.startsWith('mailto') ? null : 'noopener noreferrer'"
+               class="footer__social-pill">
+              {{ link.label }}
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- Email button -->
+      <a href="mailto:Gurusudhan@email.com" class="footer__email-btn"
+         aria-label="Send email to start a conversation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Scroll to top -->
+    <button class="footer__top-btn" (click)="scrollToTop()" aria-label="Scroll to top">
+      <span aria-hidden="true"></span>
+    </button>
+
+    <!-- Bottom bar -->
+    <div class="footer__bottom">
+      <p class="footer__copy">
+        © {{ year }} {{ personal().name }}. Made with
+        <span class="footer__heart" aria-label="love" role="img">❤️</span>
+        Figma / Angular / GSAP.
+      </p>
+    </div>
+
+    <!-- Giant name -->
+    <div class="footer__name-wrap" aria-label="Gurusudhan V">
+      <h2 class="footer__name" aria-hidden="false">Gurusudhan V</h2>
+    </div>
+
+  </div>
+
+</footer>

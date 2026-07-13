@@ -1,0 +1,68 @@
+// Color Design Tokens
+// Premium dark theme inspired by Linear, Vercel, and Apple
+
+:root {
+  // ─── Backgrounds ───────────────────────────────────────────────────────────
+  --color-bg-primary:    #0B0D10;
+  --color-bg-secondary:  #111418;
+  --color-bg-surface:    #171B21;
+  --color-bg-elevated:   #1C2028;
+  --color-bg-overlay:    rgba(11, 13, 16, 0.85);
+
+  // ─── Borders ───────────────────────────────────────────────────────────────
+  --color-border-subtle:  rgba(255, 255, 255, 0.06);
+  --color-border-default: rgba(255, 255, 255, 0.10);
+  --color-border-strong:  rgba(255, 255, 255, 0.18);
+
+  // ─── Text ──────────────────────────────────────────────────────────────────
+  --color-text-primary:   #F0F2F5;
+  --color-text-secondary: #A0A8B4;
+  --color-text-muted:     #606878;
+  --color-text-disabled:  #404650;
+  --color-text-inverse:   #0B0D10;
+
+  // ─── Accent: Electric Blue ──────────────────────────────────────────────────
+  --color-accent-primary:        #3B82F6;
+  --color-accent-primary-hover:  #60A5FA;
+  --color-accent-primary-muted:  rgba(59, 130, 246, 0.12);
+  --color-accent-primary-border: rgba(59, 130, 246, 0.30);
+  --color-accent-primary-glow:   rgba(59, 130, 246, 0.20);
+
+  // ─── Accent: Purple / Indigo ────────────────────────────────────────────────
+  --color-accent-secondary:        #7C3AED;
+  --color-accent-secondary-hover:  #8B5CF6;
+  --color-accent-secondary-muted:  rgba(124, 58, 237, 0.12);
+  --color-accent-secondary-border: rgba(124, 58, 237, 0.30);
+
+  // ─── Gradients ─────────────────────────────────────────────────────────────
+  --gradient-hero:       linear-gradient(135deg, #3B82F6 0%, #7C3AED 50%, #EC4899 100%);
+  --gradient-blue-purple: linear-gradient(135deg, #3B82F6 0%, #7C3AED 100%);
+  --gradient-text:       linear-gradient(135deg, #F0F2F5 0%, #A0A8B4 100%);
+  --gradient-accent:     linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+  --gradient-subtle:     linear-gradient(180deg, rgba(59,130,246,0.08) 0%, transparent 100%);
+  --gradient-card:       linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+
+  // ─── Status ────────────────────────────────────────────────────────────────
+  --color-success:        #10B981;
+  --color-success-muted:  rgba(16, 185, 129, 0.12);
+  --color-warning:        #F59E0B;
+  --color-warning-muted:  rgba(245, 158, 11, 0.12);
+  --color-danger:         #EF4444;
+  --color-danger-muted:   rgba(239, 68, 68, 0.12);
+
+  // ─── Glass morphism ────────────────────────────────────────────────────────
+  --glass-bg:          rgba(23, 27, 33, 0.70);
+  --glass-bg-light:    rgba(28, 32, 40, 0.50);
+  --glass-border:      rgba(255, 255, 255, 0.08);
+  --glass-blur:        16px;
+  --glass-blur-heavy:  24px;
+
+  // ─── Shadows ───────────────────────────────────────────────────────────────
+  --shadow-xs:   0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.40);
+  --shadow-md:   0 4px 16px rgba(0, 0, 0, 0.50), 0 1px 4px rgba(0, 0, 0, 0.30);
+  --shadow-lg:   0 8px 32px rgba(0, 0, 0, 0.60), 0 2px 8px rgba(0, 0, 0, 0.40);
+  --shadow-xl:   0 16px 48px rgba(0, 0, 0, 0.70), 0 4px 16px rgba(0, 0, 0, 0.50);
+  --shadow-glow: 0 0 24px rgba(59, 130, 246, 0.20), 0 0 48px rgba(59, 130, 246, 0.10);
+  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.60), 0 0 0 1px rgba(59, 130, 246, 0.15);
+}

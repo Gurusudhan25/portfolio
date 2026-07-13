@@ -1,0 +1,82 @@
+<section class="resume section">
+  <div class="container">
+
+    <app-section-header
+      label="Resume"
+      title="Career Snapshot"
+      subtitle="A concise overview of my professional journey, engineering experience, and technical expertise."
+      [appScrollReveal]="'fade-up'"
+    />
+
+    <div class="resume__grid">
+
+      <!-- Snapshot cards -->
+      <div class="resume__snapshot" [appScrollReveal]="'fade-up'" [revealDelay]="100">
+        <h3 class="resume__section-label">At a Glance</h3>
+        <div class="resume__snapshot-grid">
+          @for (item of snapshot; track item.label) {
+            <div class="resume__snapshot-card card-interactive">
+              <span class="resume__snapshot-value">{{ item.value }}</span>
+              <span class="resume__snapshot-label">{{ item.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Highlights -->
+      <div class="resume__highlights" [appScrollReveal]="'fade-up'" [revealDelay]="150">
+        <h3 class="resume__section-label">Key Highlights</h3>
+        <ul class="resume__highlights-list">
+          @for (hl of highlights; track hl) {
+            <li class="resume__highlight-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              {{ hl }}
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Actions -->
+      <div class="resume__actions" [appScrollReveal]="'fade-up'" [revealDelay]="200">
+        <h3 class="resume__section-label">Access Resume</h3>
+        <div class="resume__action-card card">
+          <p class="resume__action-description">
+            My resume is available in PDF format. View it online or download a local copy for your reference.
+          </p>
+          <div class="resume__buttons">
+            <button class="resume__btn resume__btn--primary" (click)="openResume()"
+                    aria-label="Open resume in new tab">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              View Resume
+            </button>
+
+            <button class="resume__btn resume__btn--secondary" (click)="downloadResume()"
+                    aria-label="Download resume PDF">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download PDF
+            </button>
+          </div>
+
+          <p class="resume__note">
+            Last updated · {{ personal().resumeUrl ? 'Available' : 'TODO' }}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

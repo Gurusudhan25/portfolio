@@ -1,0 +1,104 @@
+<section class="projects section">
+  <div class="container">
+
+    <app-section-header
+      label="Projects"
+      title="Engineering Projects"
+      subtitle="Real products. Real users. Real engineering challenges."
+      [appScrollReveal]="'fade-up'"
+    />
+
+    <div class="projects__grid">
+      @for (project of projects(); track project.id; let i = $index) {
+        <article
+          class="projects__card"
+          [class.projects__card--featured]="i === 0"
+          [appScrollReveal]="'fade-up'"
+          [revealDelay]="i * 100">
+
+          <div class="projects__card-inner card-interactive">
+            <!-- Header -->
+            <div class="projects__card-header">
+              <div class="projects__card-meta">
+                <app-badge [variant]="getBadgeVariant(project.industry)" size="sm">
+                  {{ project.industry }}
+                </app-badge>
+                <span class="projects__card-role">{{ project.role }}</span>
+              </div>
+
+              <!-- Visit link -->
+              @if (project.companyUrl) {
+                <a [href]="project.companyUrl" target="_blank" rel="noopener noreferrer"
+                   class="projects__external-link"
+                   [attr.aria-label]="'Visit ' + project.name + ' website'">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                  </svg>
+                </a>
+              }
+            </div>
+
+            <!-- Content -->
+            <div class="projects__card-body">
+              <h3 class="projects__card-name">{{ project.name }}</h3>
+              <p class="projects__card-tagline">{{ project.tagline }}</p>
+              <p class="projects__card-summary">{{ project.summary }}</p>
+            </div>
+
+            <!-- Highlights -->
+            <ul class="projects__highlights">
+              @for (hl of project.highlights.slice(0, 3); track hl) {
+                <li class="projects__highlight">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                       stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  {{ hl }}
+                </li>
+              }
+            </ul>
+
+            <!-- Tech stack -->
+            <div class="projects__tech">
+              @for (tech of project.technologies.slice(0, 5); track tech) {
+                <app-badge variant="default" size="sm">{{ tech }}</app-badge>
+              }
+              @if (project.technologies.length > 5) {
+                <app-badge variant="muted" size="sm">+{{ project.technologies.length - 5 }}</app-badge>
+              }
+            </div>
+
+            <!-- Footer -->
+            @if (project.hasCaseStudy !== false || project.companyUrl) {
+              <div class="projects__card-footer">
+                @if (project.hasCaseStudy !== false) {
+                  <a [routerLink]="['/projects', project.slug]" class="projects__case-study-btn"
+                     [attr.aria-label]="'View ' + project.name + ' case study'">
+                    <span>View Case Study</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="5" y1="12" x2="19" y2="12"/>
+                      <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                  </a>
+                }
+
+                @if (project.companyUrl) {
+                  <a [href]="project.companyUrl" target="_blank" rel="noopener noreferrer"
+                     class="projects__visit-btn"
+                     [attr.aria-label]="'Visit ' + project.name + ' live site'">
+                    Live Site
+                  </a>
+                }
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </div>
+
+  </div>
+</section>

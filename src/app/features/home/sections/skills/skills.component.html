@@ -1,0 +1,67 @@
+<section class="skills section">
+  <div class="container">
+
+    <app-section-header
+      label="Skills"
+      title="Engineering Toolkit"
+      subtitle="Technologies I've used to design, build, optimize, and maintain modern enterprise applications."
+      [appScrollReveal]="'fade-up'"
+    />
+
+    <!-- Logo marquee: two rows scrolling in opposite directions -->
+    <div class="skills__marquee" [appScrollReveal]="'fade-up'" aria-hidden="true">
+      <div class="skills__marquee-row skills__marquee-row--left">
+        @for (skill of marqueeRowA; track $index) {
+          <span class="skills__marquee-item">
+            <img [src]="iconUrl(skill)" [alt]="''" width="24" height="24" loading="lazy" />
+            <span>{{ skill.name }}</span>
+          </span>
+        }
+      </div>
+      <div class="skills__marquee-row skills__marquee-row--right">
+        @for (skill of marqueeRowB; track $index) {
+          <span class="skills__marquee-item">
+            <img [src]="iconUrl(skill)" [alt]="''" width="24" height="24" loading="lazy" />
+            <span>{{ skill.name }}</span>
+          </span>
+        }
+      </div>
+    </div>
+
+    <!-- Category filter -->
+    <div class="skills__filter" role="tablist" aria-label="Filter skills by category"
+         [appScrollReveal]="'fade-up'" [revealDelay]="100">
+      @for (cat of categoryOrder; track cat) {
+        <button
+          class="skills__filter-btn"
+          [class.skills__filter-btn--active]="activeCategory() === cat"
+          (click)="setCategory(cat)"
+          role="tab"
+          [attr.aria-selected]="activeCategory() === cat"
+          [attr.aria-label]="'Show ' + cat + ' skills'">
+          {{ cat }}
+        </button>
+      }
+    </div>
+
+    <!-- Skills grid -->
+    <div class="skills__grid" role="tabpanel">
+      @for (skill of filteredSkills; track skill.name; let i = $index) {
+        <div class="skills__card card-interactive" [style.animation-delay]="(i * 40) + 'ms'">
+          <div class="skills__card-header">
+            <h3 class="skills__name">{{ skill.name }}</h3>
+            <span class="skills__category">{{ skill.category }}</span>
+          </div>
+          <p class="skills__description">{{ skill.description }}</p>
+          @if (skill.projects?.length) {
+            <div class="skills__projects">
+              <span class="skills__projects-label">Used in:</span>
+              <span class="skills__projects-value">{{ getProjectNames(skill.projects) }}</span>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

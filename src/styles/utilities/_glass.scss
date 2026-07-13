@@ -1,0 +1,46 @@
+// Glassmorphism Utilities
+
+@mixin glass($blur: var(--glass-blur), $bg: var(--glass-bg)) {
+  background: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid var(--glass-border);
+}
+
+.glass {
+  @include glass;
+}
+
+.glass-heavy {
+  @include glass(var(--glass-blur-heavy), rgba(11, 13, 16, 0.80));
+}
+
+.glass-light {
+  @include glass(12px, var(--glass-bg-light));
+}
+
+// ─── Cards ─────────────────────────────────────────────────────────────────
+@mixin card-base {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  transition: var(--transition-normal);
+  transition-property: transform, box-shadow, border-color;
+}
+
+@mixin card-hover {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-accent-primary-border);
+  }
+}
+
+.card {
+  @include card-base;
+}
+
+.card-interactive {
+  @include card-base;
+  @include card-hover;
+}

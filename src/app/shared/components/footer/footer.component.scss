@@ -1,0 +1,256 @@
+// Footer — cinematic ending experience
+
+.footer {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-bg-primary);
+
+  // ─── Background ────────────────────────────────────────────────────────────
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+    animation: blob-move 16s ease-in-out infinite;
+
+    &--blue {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, #3B82F6, transparent 70%);
+      top: -200px;
+      left: -200px;
+      animation-delay: 0s;
+    }
+
+    &--purple {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #7C3AED, transparent 70%);
+      bottom: -100px;
+      right: -150px;
+      animation-delay: -8s;
+    }
+  }
+
+  &__noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  &__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 100%);
+  }
+
+  // ─── Inner ─────────────────────────────────────────────────────────────────
+  &__inner {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-20) var(--section-padding-x) 0;
+    gap: var(--space-12);
+    max-width: var(--content-wide-width);
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  &__heart {
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  // ─── Top: CTA + email button ───────────────────────────────────────────────
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-8);
+    animation: fadeInUp 0.8s var(--ease-out) both;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-6);
+    }
+  }
+
+  &__cta-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  &__chat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    background: var(--color-text-primary);
+    color: var(--color-bg-primary);
+  }
+
+  &__title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: var(--weight-extrabold);
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-none);
+    color: var(--color-text-primary);
+  }
+
+  &__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  &__social-pill {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    transition: var(--transition-fast);
+    transition-property: color, background, border-color, transform;
+
+    &:hover {
+      color: var(--color-text-primary);
+      background: var(--color-bg-elevated);
+      border-color: var(--color-border-default);
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  &__email-btn {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 96px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-primary);
+    transition: var(--transition-normal);
+    transition-property: background, border-color, transform;
+
+    &:hover {
+      background: var(--color-accent-primary-muted);
+      border-color: var(--color-accent-primary-border);
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent-primary);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 640px) {
+      width: 72px;
+      height: 72px;
+      align-self: flex-end;
+    }
+  }
+
+  // ─── Scroll to top ─────────────────────────────────────────────────────────
+  &__top-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-inline: auto;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--color-border-subtle);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    transition-property: border-color, transform;
+
+    span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-text-muted);
+    }
+
+    &:hover {
+      border-color: var(--color-border-default);
+      transform: translateY(-2px);
+
+      span { background: var(--color-text-primary); }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  // ─── Bottom bar ────────────────────────────────────────────────────────────
+  &__bottom {
+    width: 100%;
+  }
+
+  &__copy {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  // ─── Giant Name ────────────────────────────────────────────────────────────
+  &__name-wrap {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    animation: blurReveal 1.2s var(--ease-out) 0.2s both;
+  }
+
+  &__name {
+    font-size: clamp(3rem, 14vw, 11rem);
+    font-weight: var(--weight-black);
+    letter-spacing: var(--tracking-tight);
+    line-height: 0.8;
+    color: var(--color-bg-elevated);
+    white-space: nowrap;
+    user-select: none;
+
+    @media (max-width: 480px) {
+      white-space: normal;
+      word-break: break-word;
+    }
+  }
+}

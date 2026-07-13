@@ -1,0 +1,63 @@
+<section class="achievements section">
+  <div class="container">
+
+    <app-section-header
+      label="Achievements"
+      title="Engineering Impact"
+      subtitle="Delivering measurable improvements through thoughtful engineering and continuous learning."
+      [appScrollReveal]="'fade-up'"
+    />
+
+    <div class="achievements__grid">
+      @for (item of achievements(); track item.id; let i = $index) {
+        <article
+          class="achievements__card card-interactive"
+          [class.achievements__card--featured]="item.category === 'Award'"
+          [class.achievements__card--award]="item.category === 'Award'"
+          [class.achievements__card--quality]="item.category === 'Quality'"
+          [class.achievements__card--growth]="item.category === 'Growth'"
+          [appScrollReveal]="'fade-up'"
+          [revealDelay]="i * 80">
+
+          <!-- Icon + Category -->
+          <div class="achievements__card-header">
+            <span class="achievements__icon" role="img" [attr.aria-label]="item.category">
+              {{ categoryIcons[item.category] }}
+            </span>
+            <div class="achievements__card-meta">
+              <app-badge [variant]="categoryVariants[item.category]" size="sm">
+                {{ item.category }}
+              </app-badge>
+              @if (item.date) {
+                <span class="achievements__date">{{ item.date }}</span>
+              }
+              @if (item.metric) {
+                <span class="achievements__metric">{{ item.metric }}</span>
+              }
+            </div>
+          </div>
+
+          <!-- Content -->
+          <h3 class="achievements__title">{{ item.title }}</h3>
+          <p class="achievements__description">{{ item.description }}</p>
+
+          <!-- Impact -->
+          <div class="achievements__impact">
+            <span class="achievements__impact-label">Impact</span>
+            <p class="achievements__impact-text">{{ item.impact }}</p>
+          </div>
+
+          <!-- Tech -->
+          @if (item.technologies?.length) {
+            <div class="achievements__tech">
+              @for (tech of item.technologies!; track tech) {
+                <app-badge variant="default" size="sm">{{ tech }}</app-badge>
+              }
+            </div>
+          }
+        </article>
+      }
+    </div>
+
+  </div>
+</section>
