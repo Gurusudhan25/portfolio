@@ -1,52 +1,90 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Gurusudhan V | Software Engineer | Angular &amp; Full Stack Developer</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Software Engineer with 3+ years building enterprise web applications. Specializing in Angular, TypeScript, Node.js, and performance-focused frontend engineering.">
-  <meta name="author" content="Gurusudhan V">
-  <meta name="theme-color" content="#0B0D10">
+  <head>
+    <meta charset="utf-8" />
+    <title>Gurusudhan V | Software Engineer | Angular &amp; Full Stack Developer</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Software Engineer with 3+ years building enterprise web applications. Specializing in Angular, TypeScript, Node.js, and performance-focused frontend engineering."
+    />
+    <meta name="author" content="Gurusudhan V" />
+    <meta name="theme-color" content="#0B0D10" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Gurusudhan V | Software Engineer">
-  <meta property="og:description" content="Software Engineer specializing in Angular, TypeScript, and enterprise web applications.">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="en_US">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Gurusudhan V | Software Engineer" />
+    <meta
+      property="og:description"
+      content="Software Engineer specializing in Angular, TypeScript, and enterprise web applications."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Gurusudhan V | Software Engineer">
-  <meta name="twitter:description" content="Software Engineer specializing in Angular, TypeScript, and enterprise web applications.">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gurusudhan V | Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Software Engineer specializing in Angular, TypeScript, and enterprise web applications."
+    />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-  <!-- Font preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Font preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Gurusudhan V",
-    "jobTitle": "Software Engineer",
-    "description": "Software Engineer with 3+ years building enterprise web applications. Specializing in Angular, TypeScript, Node.js.",
-    "url": "https://Gurusudhan.dev",
-    "sameAs": [
-      "https://linkedin.com/in/Gurusudhan",
-      "https://github.com/Gurusudhan"
-    ],
-    "knowsAbout": ["Angular", "TypeScript", "JavaScript", "Node.js", "RxJS", "NgRx", "MongoDB", "REST APIs"]
-  }
-  </script>
-</head>
-<body>
-  <!-- Skip to main content for accessibility -->
-  <a href="#main-content" class="skip-nav">Skip to main content</a>
-  <app-root></app-root>
-</body>
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Gurusudhan V",
+        "jobTitle": "Software Engineer",
+        "description": "Software Engineer with 3+ years building enterprise web applications. Specializing in Angular, TypeScript, Node.js.",
+        "url": "https://Gurusudhan.dev",
+        "sameAs": ["https://linkedin.com/in/Gurusudhan", "https://github.com/Gurusudhan"],
+        "knowsAbout": [
+          "Angular",
+          "TypeScript",
+          "JavaScript",
+          "Node.js",
+          "RxJS",
+          "NgRx",
+          "MongoDB",
+          "REST APIs"
+        ]
+      }
+    </script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js';
+      import { getAnalytics } from 'https://www.gstatic.com/firebasejs/12.16.0/firebase-analytics.js';
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: 'AIzaSyAk80NVxugglpgosPNa38uJ67exovp8tb0',
+        authDomain: 'gurusudhan-portfolio.firebaseapp.com',
+        projectId: 'gurusudhan-portfolio',
+        storageBucket: 'gurusudhan-portfolio.firebasestorage.app',
+        messagingSenderId: '928248768217',
+        appId: '1:928248768217:web:d72f898c3ac0a7bacb00c8',
+        measurementId: 'G-DHNX9EGZWG',
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+  </head>
+  <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    <app-root></app-root>
+  </body>
 </html>
